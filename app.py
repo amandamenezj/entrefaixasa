@@ -98,7 +98,7 @@ def pagina_artistas():
         return redirect(url_for('pagina_artistas'))
     return render_template('artistas.html', artistas=artistas)
 
-# MÚSICAS: mesma lógica (envia também os artistas para montar o <select>)
+#MÚSICAS: mesma lógica (envia também os artistas para montar o <select>)
 @app.route('/musicas', methods=['GET', 'POST'])
 def pagina_musicas():
     if request.method == 'POST':
