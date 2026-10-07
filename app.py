@@ -98,7 +98,15 @@ def pagina_artistas():
         return redirect(url_for('pagina_artistas'))
     return render_template('artistas.html', artistas=artistas)
 
-
+# MÚSICAS: mesma lógica (envia também os artistas para montar o <select>)
+@app.route('/musicas', methods=['GET', 'POST'])
+def pagina_musicas():
+    if request.method == 'POST':
+        dados = ler_form('titulo', 'artista', 'album', 'genero', 'duracao', 'ano')
+        if all(dados.values()):
+            musicas.append(dados)
+        return redirect(url_for('pagina_musicas'))
+    return render_template('musicas.html', musicas=musicas, artistas=artistas)
 
 if __name__ == '__main__':
     app.run(debug=True)  # debug=True: recarrega sozinho ao salvar e mostra erros
